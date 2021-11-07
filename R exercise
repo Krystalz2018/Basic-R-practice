@@ -1,0 +1,95 @@
+Exercise 1 (5 Pts)
+Write a function what should return the sum of 3 integers.
+
+Exercise 2 (10 Pts)
+Write a function what should return TRUE if a given integer is inside a vector.
+
+Exercise 3 (10 Pts)
+Create a function given a data frame will print by screen the name of the column and the class of data it contains (e.g. Variable1 is Numeric).
+
+Exercise 4 (15 Pts)
+Create a function given a vector will return a new vector with the elements of the first vector with duplicated elements removed.
+
+Exercise 5 (15 Pts)
+Create a function given a vector and an integer will return how many times the integer appears inside the vector.
+
+Exercise 6 (15 Pts)
+Create a function given a vector will print by screen the mean and the standard deviation, it will optionally also print the median.
+
+Exercise 7 (15 Pts)
+Create a function given an integer will calculate how many divisors it has (other than 1 and itself). Make the divisors appear by screen.
+
+Exercise 8 (15 Pts)
+Create a function given a data frame, and a number or character will return the data frame with the character or number changed to NA.
+
+
+#Exercise 1
+sum<-function(x,y,z){
+  x+y+z
+}
+
+#Exercise 2
+vec<-c(1:7)
+return_true<-function(x){
+  if (x %in% vec) {
+    return('TRUE')
+  } else {
+   return('FALSE')
+  }
+}
+
+#Exercise 3
+give<-function(df){
+  for (i in 1:ncol(df)){
+    cat(colnames(df)[i], 'is', typeof(df[,i]), '\n')
+  }
+}
+
+#Exercise 4
+new_vector<-function(x){
+  unique(x)
+}
+
+#Exercise 5
+to_count<-function(y,x){
+  count<-0
+  for (i in 1:length(y)) {
+    if (y[i]==x){
+      count<-count+1
+    }
+  }
+  return(count)
+}
+
+#Exercise 6
+print_it<-function(x, med=FALSE){
+  mean<-mean(x)
+  std<-sd(x)
+  cat('Mean is:', mean, 'SD is:', std, '\n')
+  if (med){
+    median<-median(x)
+    cat('Median is:', median, '\n')
+  }
+}
+
+#Exercise 7
+divisor<-function(x){
+  i<-2
+  while(i<=x-1){
+    if(x%%i==0)
+    cat('Divisor is', i, '\n')
+    i<-i+1
+  }
+}
+
+#Exercise 8
+e8<-function(df, x){
+  for (i in 1:ncol(df)){
+    for (j in 1:nrow(df)){
+      if (df[j,i]== x){
+        df[j,i]<-NA
+      }
+    }
+  }
+  df
+}
